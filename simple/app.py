@@ -1,22 +1,21 @@
-# LIST ALL MODELS
-# import os
-# import openai
-
-# openai.api_key = "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"
-# # openai.api_key = os.getenv("OPENAI_API_KEY")
-# print(openai.Model.list())
-
-
+import os
+from dotenv import load_dotenv
 import openai
 
-openai.api_key = "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"
+
+#  Load .env variables
+load_dotenv()
+
+openai.api_key = os.getenv("OPEN_AI_API_KEY")
+
+query = input("What do you like chat gpt to answer for you :")
 
 completion = openai.ChatCompletion.create(
     model="gpt-3.5-turbo",
     messages=[
         {
             "role": "user",
-            "content": "how can i use .env files in python, do i have to install dotenv like package or nac i use os.getenv module, i am using pipenv",
+            "content": query,
         }
     ],
 )
